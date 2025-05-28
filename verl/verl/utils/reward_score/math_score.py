@@ -1,7 +1,49 @@
 import os
-from verl.utils.reward_score.math_utils import is_equal, solution2answer
-
 from collections import Counter
+from verl.utils.reward_score.math_utils import is_equiv
+
+def last_boxed_only_string(string):
+    idx = string.rfind("\\boxed")
+    if idx < 0:
+        idx = string.rfind("\\fbox")
+        if idx < 0:
+            return None
+
+    i = idx
+    right_brace_idx = None
+    num_left_braces_open = 0
+    while i < len(string):
+        if string[i] == "{":
+            num_left_braces_open += 1
+        if string[i] == "}":
+            num_left_braces_open -= 1
+            if num_left_braces_open == 0:
+                right_brace_idx = i
+                break
+        i += 1
+
+    if right_brace_idx is None:
+        retval = None
+    else:
+        retval = string[idx : right_brace_idx + 1]
+
+    return retval
+
+
+def remove_boxed(s):
+    left = "\\boxed{"
+    try:
+        assert s[: len(left)] == left
+        assert s[-1] == "}"
+        return s[len(left) : -1]
+    except Exception:
+        return None
+
+def solution2answer(solution: str) -> str:
+    answer = remove_boxed(last_boxed_only_string(solution))
+    if answer is not None:
+        return answer
+    return solution
 
 def calculate_ngram_repetition_ratio(text, n):
     # 将文本按空格拆分成单词
@@ -89,7 +131,6 @@ def compute_score(solution_str: str, ground_truth: str, response_length: int, ve
     
     answer_text = solution2answer(solution_str)
     ground_truth = solution2answer(ground_truth)
-    # score = is_equal(ground_truth, answer_text)
     score = 0.0
     
     print("\n\n" + "=" * 80)
@@ -104,7 +145,7 @@ def compute_score(solution_str: str, ground_truth: str, response_length: int, ve
     
     score = None
     if is_test or is_check_correctness:  
-        score = float(is_equal(ground_truth, answer_text))
+        score = float(is_equiv(ground_truth, answer_text))
         print(f"[Is Correct?]\n{score}")
 
     format_score = float(think_reward(solution_str))

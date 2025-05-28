@@ -28,15 +28,6 @@ To train the model on the ORZ dataset, use the following command:
 bash scripts/train_rl_math_7b_orz_flip.sh FLIP_PROBABILITY
 ```
 
-Before training, please ensure you replace the file at the following location with your own math verification code:
-
-```
-verl/verl/utils/reward_score/math_utils.py
-```
-This is because the `math_utils.py` file we used contains proprietary company-specific code that cannot be made public now. 
-We are currently working on extracting and open-sourcing the non-sensitive portions.
-However, as we discuss in the paper, verification accuracy is not a major concern, so you can confidently substitute this file with any math verification script of your choice.
-
 ### Math Evaluation
 
 After training a few steps, the code automatically evaluates the model on three test sets (AIME, GPQA, MATH500).
