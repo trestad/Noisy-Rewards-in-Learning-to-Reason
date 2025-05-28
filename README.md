@@ -37,6 +37,10 @@ This is because the `math_utils.py` file we used contains proprietary company-sp
 We are currently working on extracting and open-sourcing the non-sensitive portions.
 However, as we discuss in the paper, verification accuracy is not a major concern, so you can confidently substitute this file with any math verification script of your choice.
 
+### Math Evaluation
+
+After training a few steps, the code automatically evaluates the model on three test sets (AIME, GPQA, MATH500).
+
 ### HelpSteer3 Training
 
 For training on the HelpSteer3 dataset, use:
@@ -46,6 +50,14 @@ bash scripts/train_rl_help_qwen_flip.sh RM_PATH
 ```
 
 The training set is already available in the `dataset/` folder. Since some sensitive information in the validation set cannot pass GitHub’s review, you'll need to download the validation set [here](https://drive.google.com/file/d/1ABrlXPXdC34oTUg2otrlRMihxITeoesq/view?usp=sharing).
+
+### HelpSteer3 Evaluation
+
+```sh
+bash scripts/help_generate.sh REASONING_MODEL_PATH OUTPUT_PATH
+```
+
+Use ```gpt_eval.py``` to compare two models' outputs.
 
 ### RM Checkpoint Download
 
