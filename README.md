@@ -52,7 +52,7 @@ Use ```gpt_eval.py``` to compare two models' outputs.
 
 ### RM Checkpoint Download
 
-[65% Acc](hhttps://huggingface.co/AngLv/NoisyRewards-in-RL-RM-acc-65/tree/main)
+[65% Acc](https://huggingface.co/AngLv/NoisyRewards-in-RL-RM-acc-65/tree/main)
 
 [85% Acc](https://huggingface.co/AngLv/NoisyRewards-in-RL-RM-acc-85/tree/main)
 
