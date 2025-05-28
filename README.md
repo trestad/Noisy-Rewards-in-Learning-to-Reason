@@ -1,6 +1,6 @@
 # The Climb Carves Wisdom Deeper Than the Summit: On the Noisy Rewards in Learning to Reason
 
-[Paper Link](noise_rewards_in_learning_to_reason.pdf)
+[Paper Link](./noisy_rewards_in_learning_to_reason.pdf)
 
 
 ## Setup
