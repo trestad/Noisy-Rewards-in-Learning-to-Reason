@@ -61,9 +61,9 @@ Use ```gpt_eval.py``` to compare two models' outputs.
 
 ### RM Checkpoint Download
 
-[65% Acc]()
+[65% Acc](Uploading)
 
-[85% Acc]()
+[85% Acc](Uploading)
 
 
 ### Acknowledgments
